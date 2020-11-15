@@ -12,9 +12,8 @@ namespace VirtualGYM.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public bool Completada { get; set; }
-        public List<Clase> IdClases { get; set; }
-        public List<Objetivo> IdObjetivos { get; set; }
-
+        public Socio IdSocio { get; set; }
+        public Objetivo IdObjetivos { get; set; }
+        public Clase IdClases { get; set; }
     }
 }

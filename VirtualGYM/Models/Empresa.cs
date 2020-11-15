@@ -20,6 +20,5 @@ namespace VirtualGYM.Models
         public List<Socio> IdSocios { get; set; }
         public List<Clase> IdClases { get; set; }
         public List<Rutina> IdRutinas { get; set; }
-        public List<Objetivo> IdObjetivos { get; set; }
     }
 }

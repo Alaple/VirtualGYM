@@ -14,6 +14,5 @@ namespace VirtualGYM.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public int Esfuerzo { get; set; }
-        public Rutina_Objetivo IdRutina { get; set; }
     }
 }

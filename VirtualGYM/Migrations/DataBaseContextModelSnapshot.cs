@@ -29,8 +29,6 @@ namespace VirtualGYM.Migrations
 
                     b.Property<int>("Esfuerzo");
 
-                    b.Property<int?>("IdObjetivosId");
-
                     b.Property<string>("Nombre");
 
                     b.Property<string>("Url");
@@ -38,8 +36,6 @@ namespace VirtualGYM.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EmpresaId");
-
-                    b.HasIndex("IdObjetivosId");
 
                     b.ToTable("Clases");
                 });
@@ -50,9 +46,19 @@ namespace VirtualGYM.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("Completada");
+                    b.Property<int?>("IdClasesId");
+
+                    b.Property<int?>("IdObjetivosId");
+
+                    b.Property<int?>("IdSocioId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdClasesId");
+
+                    b.HasIndex("IdObjetivosId");
+
+                    b.HasIndex("IdSocioId");
 
                     b.ToTable("Clases_Objetivos");
                 });
@@ -82,23 +88,11 @@ namespace VirtualGYM.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("EmpresaId");
-
                     b.Property<double>("EsfuerzoTotal");
-
-                    b.Property<int?>("IdClasesId");
-
-                    b.Property<int?>("IdRutinasId");
 
                     b.Property<string>("Nombre");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmpresaId");
-
-                    b.HasIndex("IdClasesId");
-
-                    b.HasIndex("IdRutinasId");
 
                     b.ToTable("Objetivos");
                 });
@@ -130,15 +124,11 @@ namespace VirtualGYM.Migrations
 
                     b.Property<int>("Esfuerzo");
 
-                    b.Property<int?>("IdRutinaId");
-
                     b.Property<string>("Nombre");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EmpresaId");
-
-                    b.HasIndex("IdRutinaId");
 
                     b.ToTable("Rutinas");
                 });
@@ -149,9 +139,19 @@ namespace VirtualGYM.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("Completada");
+                    b.Property<int?>("IdObjetivosId");
+
+                    b.Property<int?>("IdRutinasId");
+
+                    b.Property<int?>("IdSocioId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdObjetivosId");
+
+                    b.HasIndex("IdRutinasId");
+
+                    b.HasIndex("IdSocioId");
 
                     b.ToTable("Rutinas_Objetivos");
                 });
@@ -196,25 +196,21 @@ namespace VirtualGYM.Migrations
                     b.HasOne("VirtualGYM.Models.Empresa")
                         .WithMany("IdClases")
                         .HasForeignKey("EmpresaId");
-
-                    b.HasOne("VirtualGYM.Models.Clase_Objetivo", "IdObjetivos")
-                        .WithMany("IdClases")
-                        .HasForeignKey("IdObjetivosId");
                 });
 
-            modelBuilder.Entity("VirtualGYM.Models.Objetivo", b =>
+            modelBuilder.Entity("VirtualGYM.Models.Clase_Objetivo", b =>
                 {
-                    b.HasOne("VirtualGYM.Models.Empresa")
-                        .WithMany("IdObjetivos")
-                        .HasForeignKey("EmpresaId");
-
-                    b.HasOne("VirtualGYM.Models.Clase_Objetivo", "IdClases")
-                        .WithMany("IdObjetivos")
+                    b.HasOne("VirtualGYM.Models.Clase", "IdClases")
+                        .WithMany()
                         .HasForeignKey("IdClasesId");
 
-                    b.HasOne("VirtualGYM.Models.Rutina_Objetivo", "IdRutinas")
-                        .WithMany("IdObjetivos")
-                        .HasForeignKey("IdRutinasId");
+                    b.HasOne("VirtualGYM.Models.Objetivo", "IdObjetivos")
+                        .WithMany()
+                        .HasForeignKey("IdObjetivosId");
+
+                    b.HasOne("VirtualGYM.Models.Socio", "IdSocio")
+                        .WithMany()
+                        .HasForeignKey("IdSocioId");
                 });
 
             modelBuilder.Entity("VirtualGYM.Models.Oferta", b =>
@@ -229,10 +225,21 @@ namespace VirtualGYM.Migrations
                     b.HasOne("VirtualGYM.Models.Empresa")
                         .WithMany("IdRutinas")
                         .HasForeignKey("EmpresaId");
+                });
 
-                    b.HasOne("VirtualGYM.Models.Rutina_Objetivo", "IdRutina")
-                        .WithMany("IdRutinas")
-                        .HasForeignKey("IdRutinaId");
+            modelBuilder.Entity("VirtualGYM.Models.Rutina_Objetivo", b =>
+                {
+                    b.HasOne("VirtualGYM.Models.Objetivo", "IdObjetivos")
+                        .WithMany()
+                        .HasForeignKey("IdObjetivosId");
+
+                    b.HasOne("VirtualGYM.Models.Rutina", "IdRutinas")
+                        .WithMany()
+                        .HasForeignKey("IdRutinasId");
+
+                    b.HasOne("VirtualGYM.Models.Socio", "IdSocio")
+                        .WithMany()
+                        .HasForeignKey("IdSocioId");
                 });
 
             modelBuilder.Entity("VirtualGYM.Models.Socio", b =>

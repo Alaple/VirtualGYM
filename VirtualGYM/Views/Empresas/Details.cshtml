@@ -2,41 +2,138 @@
 
 @{
     ViewData["Title"] = "Details";
+    ViewBag.Title = "Index";
 }
 
 <h2>Details</h2>
-
 <div>
     <h4>Empresa</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
+            Nombre
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Nombre)
+            @Model.Nombre
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
+            Direccion
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Direccion)
+            @Model.Direccion
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
+            Telefono
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Telefono)
+            @Model.Telefono
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Mail)
+            Mail
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Mail)
+            @Model.Mail
         </dd>
     </dl>
 </div>
+<h4>@ViewBag.Message</h4>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellido
+            </th>
+            <th>
+                Edad
+            </th>
+            <th>
+                Sexo
+            </th>
+            <th>
+                Peso
+            </th>
+            <th>
+                Altura
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Socio)
+        {
+            <tr>
+                <td>
+                    @item.Nombre
+                </td>
+                <td>
+                    @item.Apellido
+                </td>
+                <td>
+                    @item.Edad
+                </td>
+                <td>
+                    @item.Sexo
+                </td>
+                <td>
+                    @item.Peso
+                </td>
+                <td>
+                    @item.Altura
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h4>Ofertas</h4>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Precio
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Oferta)
+        {
+            <tr>
+                <td>
+                    @item.Costo
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h4>Ofertas 2</h4>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Precio
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Oferta2)
+        {
+            <tr>
+                <td>
+                    @item.Costo
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+
+
+

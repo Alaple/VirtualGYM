@@ -12,9 +12,17 @@ namespace VirtualGYM.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
+        [MaxLength(15)]
         public string Nombre { get; set; }
+        [Required]
+        [MaxLength(30)]
         public string Direccion { get; set; }
+        [Required]
+        [Phone]
         public string Telefono { get; set; }
+        [Required]
+        [EmailAddress]
         public string Mail { get; set; }
         public List<Oferta> IdOfertas { get; set; }
         public List<Socio> IdSocios { get; set; }

@@ -22,12 +22,23 @@ namespace VirtualGYM.Controllers
         // GET: Empresas
         public async Task<IActionResult> Index()
         {
+            
+            //List<Socio> socios = new List<Socio>();
+            //socios.Add(new Socio { Id = 1, Usuario="Alaple", Nombre="Lucas", Apellido="Palacios", Clave="1234", Sexo="Masculino", Edad=25, Peso=78.8, Altura=1.87, IdObjetivo=new Objetivo(), IdEmpresa=new Empresa() });
+
             return View(await _context.Empresas.ToListAsync());
         }
+
 
         // GET: Empresas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.Message = "Socios";
+            ViewBag.Socio = await _context.Socios.ToListAsync();
+
+            ViewBag.Oferta = await _context.Ofertas.Where(x => x.Id == 1).ToListAsync();
+            ViewBag.Oferta2 = await _context.Ofertas.ToListAsync();
+
             if (id == null)
             {
                 return NotFound();

@@ -44,7 +44,8 @@ namespace VirtualGYM.Models
         [MaxLength(3)]
         [Range(100, 250)]
         public double Altura { get; set; }
+        public int IdEmpresa { get; set; }
         public Objetivo IdObjetivo { get; set; }
-        public Empresa IdEmpresa { get; set; }
+        public Empresa empresa { get; set; }
     }
 }

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - VirtualGYM</title>
 
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -28,18 +31,13 @@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">VirtualGYM</a>
             </div>
+            <a style="float: right" asp-controller="Socios" asp-action="Index" class="navbar-brand">LogIn</a>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Empresas" asp-action="Index">Empresas</a></li>
-                    <li><a asp-area="" asp-controller="Ofertas" asp-action="Index">Ofertas</a></li>
-                    <li><a asp-area="" asp-controller="Socios" asp-action="Index">Socios</a></li>
-                    <li><a asp-area="" asp-controller="Objetivos" asp-action="Index">Objetivos</a></li>
-                    <li><a asp-area="" asp-controller="Clases" asp-action="Index">Clases</a></li>
-                    <li><a asp-area="" asp-controller="Rutinas" asp-action="Index">Rutinas</a></li>
-
-                    <li><a asp-area="" asp-controller="Clase_Objetivo" asp-action="Index">Clase_Objetivo</a></li>
-                    <li><a asp-area="" asp-controller="Rutina_Objetivo" asp-action="Index">Rutinas_Objetivo</a></li>
+                    <li><a href="#clases">Clases</a></li>
+                    <li><a href="#rutinas">Rutinas</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#howweare">Quienes somos?</a></li>
                 </ul>
             </div>
         </div>

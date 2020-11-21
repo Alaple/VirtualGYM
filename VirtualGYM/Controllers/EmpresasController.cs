@@ -36,8 +36,10 @@ namespace VirtualGYM.Controllers
             ViewBag.Message = "Socios";
             ViewBag.Socio = await _context.Socios.ToListAsync();
 
-            ViewBag.Oferta = await _context.Ofertas.Where(x => x.Id == 1).ToListAsync();
-            ViewBag.Oferta2 = await _context.Ofertas.ToListAsync();
+            //ViewBag.Socio = await _context.Socios.Where(x => x.IdEmpresa == 1).ToListAsync();
+
+            ViewBag.Oferta = await _context.Ofertas.Where(x => x.IdEmpresa == 1).ToListAsync();
+            ViewBag.Oferta2 = await _context.Ofertas.ToListAsync(); // DO NOT COUNT
 
             if (id == null)
             {

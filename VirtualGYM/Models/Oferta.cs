@@ -13,5 +13,6 @@ namespace VirtualGYM.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int Costo { get; set; }
+        public int IdEmpresa { get; set; }
     }
 }

@@ -22,6 +22,7 @@ namespace VirtualGYM.Controllers
         // GET: Socios
         public async Task<IActionResult> Index()
         {
+            ViewBag.clases = await _context.Clases.ToListAsync(); 
             return View(await _context.Socios.ToListAsync());
         }
 

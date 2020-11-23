@@ -15,5 +15,6 @@ namespace VirtualGYM.Models
         public string Nombre { get; set; }
         public int Esfuerzo { get; set; }
         public string Url { get; set; }
+        public string UrlImageId { get; set; }
     }
 }

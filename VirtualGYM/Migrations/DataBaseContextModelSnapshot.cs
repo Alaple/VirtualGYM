@@ -33,6 +33,8 @@ namespace VirtualGYM.Migrations
 
                     b.Property<string>("Url");
 
+                    b.Property<string>("UrlImageId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EmpresaId");

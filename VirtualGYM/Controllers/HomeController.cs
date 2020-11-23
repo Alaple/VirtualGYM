@@ -4,14 +4,22 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using VirtualGYM.Context;
 using VirtualGYM.Models;
 
 namespace VirtualGYM.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly DataBaseContext _context;
+        public HomeController(DataBaseContext context)
         {
+            _context = context;
+        }
+        public async Task<IActionResult> Index()
+        {
+            ViewBag.clases = await _context.Clases.ToListAsync();
             return View();
         }
 

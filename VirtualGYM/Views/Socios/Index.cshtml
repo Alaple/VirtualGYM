@@ -109,13 +109,15 @@
                         {
                             <div class="item active">
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@item.UrlImageId" allowfullscreen></iframe>
+                                        <a asp-action="ActualizarEsfuerzo">
+                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@item.UrlImageId" allowfullscreen></iframe>
+                                        </a>
                                     </div>
                             </div>
                         }
                         else
                         {
-                            <div class="item">
+                            <div class="item" href="">
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe  class="embed-responsive-item" src="https://www.youtube.com/embed/@item.UrlImageId" allowfullscreen></iframe>
                                 </div>
@@ -135,8 +137,9 @@
     </div>
 </div>
 <script>
+    console.log(document.getElementsByClassName('carousel-inner'));
     document.getElementsByClassName('carousel-inner')[0]
         .addEventListener('click', async function (event) {
-            alert("Click detected");
-        });
+            //alert("Click detected");            
+        })
 </script>

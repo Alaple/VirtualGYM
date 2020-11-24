@@ -35,17 +35,12 @@ namespace VirtualGYM.Models
         [Range(16, 99)]
         public int Edad { get; set; }
         [Required]
-        [MinLength(2)]
-        [MaxLength(3)]
-        [Range(10, 400)]
         public double Peso { get; set; }
         [Required]
-        [MinLength(2)]
-        [MaxLength(3)]
-        [Range(100, 250)]
         public double Altura { get; set; }
         public int IdEmpresa { get; set; }
-        public Objetivo IdObjetivo { get; set; }
+        public int IdObjetivo { get; set; }
+        public Objetivo objetivo { get; set; }
         public Empresa empresa { get; set; }
     }
 }

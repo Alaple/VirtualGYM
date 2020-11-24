@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VirtualGYM.Context;
 
 namespace VirtualGYM.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20201123234521_DataBase")]
+    partial class DataBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,7 +174,8 @@ namespace VirtualGYM.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Altura");
+                    b.Property<double>("Altura")
+                        .HasMaxLength(3);
 
                     b.Property<string>("Apellido")
                         .IsRequired()
@@ -193,7 +196,8 @@ namespace VirtualGYM.Migrations
                         .IsRequired()
                         .HasMaxLength(15);
 
-                    b.Property<double>("Peso");
+                    b.Property<double>("Peso")
+                        .HasMaxLength(3);
 
                     b.Property<string>("Sexo");
 

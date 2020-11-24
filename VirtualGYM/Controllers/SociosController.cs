@@ -22,7 +22,7 @@ namespace VirtualGYM.Controllers
         // GET: Socios
         public async Task<IActionResult> Index()
         {
-            ViewBag.clases = await _context.Clases.ToListAsync(); 
+            ViewBag.clases = await _context.Clases.ToListAsync();
             return View(await _context.Socios.ToListAsync());
         }
 
@@ -149,6 +149,17 @@ namespace VirtualGYM.Controllers
         private bool SocioExists(int id)
         {
             return _context.Socios.Any(e => e.Id == id);
+        }
+
+        private async Task<IActionResult> ActualizarEsfuerzo()
+        {
+            int idSocio = 1; int esfuerzo = 10;
+            var socio = _context.Socios.Where(x => x.Id == idSocio).FirstOrDefault<Socio>(); // BUSCAMOS EL SOCIO
+            var objetivo = _context.Objetivos.Where(x => x.Id == socio.IdObjetivo).FirstOrDefault<Objetivo>(); // BUSCAMOS SU OBJETIVO
+            objetivo.EsfuerzoTotal =- esfuerzo;
+            await _context.SaveChangesAsync();
+            Console.WriteLine("ENTRE A LA FUNCION");
+            return View("Index");
         }
     }
 }
